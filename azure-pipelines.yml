@@ -1,4 +1,10 @@
-# Maven
+trigger:
+- main
+
+pool:
+  name: Default
+
+steps:
 - task: Veracode@3
   inputs:
     ConnectionDetailsSelection: 'Credentials'
@@ -8,17 +14,7 @@
     version: '$(build.buildNumber)'
     filepath: '$(build.artifactstagingdirectory)'
     maximumWaitTime: '360'
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
-- main
-
-pool:
-  name: Default
-
-steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
